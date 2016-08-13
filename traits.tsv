@@ -1,0 +1,91 @@
+"Trait Matrix"																								
+"Species"	"Source"	"Size"	"Calcification"	"Shape"	"Carapace Texture"	"Ventral margin"	"Dorsal Margin"	"Posterior Margin"	"Anterior Margin"	"Left overlap"	"Spines"	"Carapace pits"	"Opaque Areas"	"Denticulations"	"ala"	"nodes"	"caudal process"	"sulcus"	"eye tubercule"	"Collection"				
+"Species"	"Source"	"Size"	"Calcification"	"Shape"	"Carapace Texture"	"Ventral margin"	"Dorsal Margin"	"Posterior Margin"	"Anterior Margin"	"Left overlap"	"Spines"	"Carapace pits"	"Opaque Areas"	"Denticulations"	"ala"	"nodes"	"caudal process"	"sulcus"	"eye tubercule"	"Collection"	"Column1"	"Column2"	"Column3"	"Column4"
+"Paranesidea harpago "		1	1	0	0	1	0	0		0	0	1	1	0	0	0	0	0	0					
+"Paracypria inopinata "		1	0	1	0	0	0	1		0	0	0	0	0	0	0	0	0	0					
+"Cytherella arostrata "		1	1	0	1	1	0	0		0	0	0	0	0	0	0	0	0	0					
+"Cyprideis americana"		2	2	1	1	1	0	0		1	0	0	0	1	0	0	0	0	0					
+"Peratocytheridea setipunctata"		2	1	1	1	1	0	0		1	0	0	0	1	0	1	0	0	0					
+"Perissocytheridea bicelliforma "		0	1	0	2	1	0	0		0	0	1	0	0	1	0	0	1	0					
+"Aurila floridana "		0	1	0	2	1	0	0		0	1	0	0	0	0	0	1	0	0					
+"Loxoconcha pursubrhomboidea "		1	1	0	2	1	1	0		0	0	0	0	0	0	0	1	0	0					
+"Climacoidea (Reticulocythereis) multicarinata"		0	2	0	2	1	0	0		0	0	0	0	0	0	0	0	0	1					
+"Xestoleberis curassavica "		0	1	0	1	1	0	0		0	0	0	0	0	0	0	0	0	0					
+"Actinocythereis bahamensi"		1	1	0	1	0	0	0		0	1	0	0	0	0	0	0	0	0					
+"Bairdoppilata carinata"		1	1	0	1	0	0	0		0	0	0	0	0	0	0	0	0	0					
+"Aglaiocypris croneisi"		1	1	1	0	0	0	1		1	0	0	0	0	0	0	0	0	0					
+"Bairdoppilata (Glyptobairdia) trindosa"		1	1	0	1	0	0	0		1	0	0	0	1	0	1	0	0	0					
+"Cypretta intonsa "		2	1	0	1	0	1	0		1	0	1	0	0	0	0	0	1	0					
+"Cushmanidea cristifera"		1	1	1	1	0	0	0		0	0	0	0	1	0	0	0	0	0					
+"Cypretta intonsa "		1	1	1	1	0	0	0		0	1	1	1	0	0	0	0	0	0					
+"Cypridopsis vidua "		1	1	1	0	1	0	0		0	0	1	0	0	0	0	0	0	0					
+"Darwinula stevensoni"		1	0	1	1	0	0	0		1	0	0	1	0	0	0	0	0	0					
+"Limnocythere floridensis "		0	1	1	2	0	0	0		0	1	0	0	0	0	1	0	1	0					
+"Loxoconcha suboculocrista"		1	0	0	2	0	1	0		0	1	0	0	0	0	0	0	0	1					
+"Macrocyprina propinqua"		2	1	1	1	0	0	0		0	0	0	1	0	0	0	0	0	0					
+"Palmoconcha turbida"		1	1	1	0	0	0	0		1	0	0	0	0	0	0	0	0	1					
+"Paranesidea sterreri "		1	1	1	1	0	0	0		0	0	0	1	1	0	0	0	0	0					
+"Propontocypris multiporifera "		2	1	1	0	0	0	1		0	0	0	0	0	0	0	0	0	0					
+"Puriana convoluta "		1	1	0	2	0	1	0		0	1	0	0	0	0	0	0	0	0					
+"Radimella confragosa "		0	1	1	2	0	0	0		0	0	0	0	0	0	0	0	0	0					
+"Xestoleberis sp. C of Keyser and Schöning (2000)"		1	1	0	1	1	0	0		0	0	0	0	0	0	0	0	0	0					
+"Cytherella banda"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"	1	1	1	0	1	1	0	0	0	0	0	0	0	0	0	0	0	0	"p.1"				
+"Cytherelloidea californica"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"	1	1	1	1	1	1	0	0	1	0	0	0	0	0	0	0	1	0					
+"Cypridopsis vidua"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Paracypris pacifica"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Bythocypris actites"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Bairdia sp. aff. B. verdesensis"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Triebelina reticulopunctata"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Hemicytherideis sp."	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Cyprideis (Goerlichia) stewarti"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Cyprideis (Goerlichia) miguelensis"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Cyprideis (Goerlichia) castus"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Cyprideis (Goerlichia) sp."	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Haplocytheridea maia"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Haplocytheridea palda"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Paracytheridea granti"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Brachycythere lincolnensis"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Brachycythere schumannensis"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Brachycythere driveri"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Brachycythere sp."	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Palmenella carida"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Loxoconcha lenticulata"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Cytherura sp. cf. C. gibba"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Hemicytherura sp. cf. H. clathrata"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Cytheropteron pacificum"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Cytheropteron newportense"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Cytheropteron ensenadense"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Xestoleberis aurantia"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Xestoleberis banda"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Sclerochilus nasus"	"Benson 1959; Unit 1, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Pellucistoma scrippsi"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"	1	1	0	0	0	1	0	0	1	0		1	0	0	0	0	0	0					
+"Pterygocythereis semitranslucens"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"	2	" "																					
+"Puriana pacifica"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Cythereis glauca"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Bradleya aurita"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Bradleya diegoensis"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Bradleya pennata"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Bradleya sp. cf. B. schencki"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Quadracythere regalia"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Hemicythere jollaensis"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Hemicythere californiensis"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Hemicythere palosensis"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Caudites fragilis"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Leguminocythereis corrugata"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Basslerites delreyensis"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Genus A, sp. A"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Genus B, sp. A"	"Benson 1959; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Cytherelloidea? sp."	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Bairdia ceramensis"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Triebelina bradyi"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Triebelina sertata"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Krithe droogeri"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Caudites javana"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Loxoconcha alata longispina"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Bythocythere kueneni"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Bythocythere? sp."	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Monoceratina sp. A"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Monoceratina sp. B"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Neomonoceratina columbiformis = N. microreticulata"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Payenborchella iocosa"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
+"Payenborchella malaiensis"	"Key, 1953; Unit 2, H.S. Puri Card Catalogue of Recent Ostracoda, Mclean Card Catalogue"																							
