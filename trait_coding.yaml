@@ -1,0 +1,73 @@
+"Valve size":
+  2: "large >1.00mm x 0.50mm"
+  1: "medium <0.50mm-1.00mm, >0.25mm-0.50mm"
+  0: "small <0.50mm x 0.25mm"
+
+"Valve calcification":
+  2: "Think"
+  1: "Average"
+  0: "Weak"
+
+"Valve Shape (dorsal view: anterior-posterior)":
+  1: "Rectangular or subrectangular"
+  0: "Ovate or subovate"
+
+"Presence of surface reticulation":
+  1: "Present"
+  0: "Absent"
+
+"Ventral margin shape":
+  2: "Concave"
+  1: "Straight"
+  0: "Convex"
+
+"Dorsal margin shape":
+  2: "Concave"
+  1: "Straight"
+  0: "Convex"
+
+"Posterior margin shape":
+  2: "Concave"
+  1: "Straight"
+  0: "Convex"
+
+"Right/left valve size ratio":
+  2: "Right valve larger"
+  1: "Equally-sized valves"
+  0: "Left valve larger"
+
+"Presence of spines":
+  1: "Present"
+  0: "Absent"
+
+"Presence of carapace pits":
+  1: "Present"
+  0: "Absent"
+
+"Presence of opaque patches on valve":
+  1: "Present"
+  0: "Absent"
+
+"Presence of denticulations":
+  1: "Present"
+  0: "Absent"
+
+"Presence of alae":
+  1: "Present"
+  0: "Absent"
+
+"Presence of nodes":
+  1: "Present"
+  0: "Absent"
+
+"Presence of caudal process":
+  1: "Present"
+  0: "Absent"
+
+"Presence of sulcus":
+  1: "Present"
+  0: "Absent"
+
+"Presence of eye tubercules":
+  1: "Present"
+  0: "Absent"
