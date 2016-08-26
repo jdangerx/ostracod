@@ -21,7 +21,7 @@ def look_at_everything():
 
 @app.route("/prefix/")
 @app.route("/prefix/<prefix>")
-def prefix_search(prefix=""):
+def prefix_search(prefix="\0"):
     matches = {species: traits
                for species, traits in db.items()
                if species.startswith(prefix.lower())}

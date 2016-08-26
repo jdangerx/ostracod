@@ -33,5 +33,5 @@
 
     speciesInputBox.onkeyup = function(event) {
         ajax("GET", "/prefix/" + event.target.value, displayResults.bind(null, "results-container"));
-    }
+    };
 })();
