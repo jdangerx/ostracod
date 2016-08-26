@@ -1,5 +1,6 @@
 from flask import Flask
 from database import from_xlsx
+from utils import title_case_species
 import json
 app = Flask(__name__)
 
@@ -7,20 +8,9 @@ app = Flask(__name__)
 db = from_xlsx("Trait Matrix.xlsx")
 
 
-def title_case_species(d):
-    title_d = {}
-    for k, v in d.items():
-        try:
-            title_v = v.title().replace("_", " ")
-        except:
-            title_v = title_case_species(v)
-        title_d[k.title().replace("_", " ")] = title_v
-    return title_d
-
-
 @app.route("/")
 def look_at_everything():
-    return json.dumps(db)
+    return json.dumps(title_case_species(db))
 
 
 @app.route("/prefix/<prefix>")
