@@ -1,10 +1,10 @@
 from flask import Flask
+from database import from_xlsx
 import json
 app = Flask(__name__)
 
 
-with open("traits.json") as j:
-    db = json.loads(j.read())
+db = from_xlsx("Trait Matrix.xlsx")
 
 
 def title_case_species(d):
