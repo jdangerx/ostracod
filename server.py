@@ -43,6 +43,7 @@ def filter():
     except TypeError:
         traits = []
     matches = prefix_search(db.items(), name)
+    print(traits)
     for trait, value in traits:
-        matches = trait_value_search(matches.items(), trait, value)
+        matches = trait_value_search(matches.items(), trait, int(value))
     return json.dumps(title_case_species(matches))
