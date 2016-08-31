@@ -13,7 +13,7 @@
     render: function() {
       var traitEntries = Object.keys(this.props.traits).map(function(traitName) {
         return (
-            <TraitEntry key={traitName} traitName={traitName} traitValue={this.props.traits[traitName].Traits} />
+            <TraitEntry key={traitName} traitName={traitName} traitValue={this.props.traits[traitName].Value} />
         );
       }.bind(this));
       return (
@@ -47,9 +47,6 @@
     query: function() {
       var name = this.state.name.trim();
       var traits = this.state.traits;
-      if (!name || !traits) {
-        return;
-      }
       this.props.onQuery({name: name, traits: traits});
     },
 
@@ -89,12 +86,13 @@
     },
 
     componentDidMount: function() {
-      this.getSpecies("/all");
+      this.getSpecies({name: "", traits: {}});
     },
 
-    getSpecies: function(url) {
+    getSpecies: function(queryParams) {
       $.ajax({
-        url: url,
+        url: "/filter",
+        data: queryParams,
         dataType: "json",
         cache: false,
         success: function(data) {
@@ -107,7 +105,7 @@
     },
 
     handleSpeciesSubmit: function(species) {
-      this.getSpecies("/prefix/" + species.name);
+      this.getSpecies({name: species.name, traits: JSON.stringify({size: 0})});
     },
 
     render: function() {

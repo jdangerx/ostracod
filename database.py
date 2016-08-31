@@ -32,5 +32,5 @@ def from_xlsx(filepath):
     traits = make_dicts_from_rows(trait_names, species_info)
     comments = make_dicts_from_rows(comment_trait_names, species_comments)
 
-    species = {s: merge_dicts({"traits": traits[s], "comments": comments[s]}) for s in traits}
+    species = {s: merge_dicts({"value": traits[s], "comments": comments[s]}) for s in traits}
     return species
