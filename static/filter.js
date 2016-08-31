@@ -1,10 +1,4 @@
 (function() {
-  var fakeData = {
-    "species name one": {"trait one": 0, "trait two": 0},
-    "species name two": {"trait one": 0, "trait two": 1},
-    "species name three": {"trait one": 1, "trait two": 0}
-  };
-
   var TraitEntry = React.createClass({
     render: function() {
       return (
@@ -41,12 +35,34 @@
     }
   });
 
-  var SpeciesInputBox = React.createClass({
+  var SpeciesForm = React.createClass({
+    getInitialState: function() {
+      return {name: "", traits: {}};
+    },
+
+    handleNameChange: function(e) {
+      this.setState({name: e.target.value}, this.query);
+    },
+
+    query: function() {
+      var name = this.state.name.trim();
+      var traits = this.state.traits;
+      if (!name || !traits) {
+        return;
+      }
+      this.props.onQuery({name: name, traits: traits});
+    },
+
+    handleSubmit: function(e) {
+      e.preventDefault();
+      this.query();
+    },
+
     render: function() {
       return (
-          <div className="speciesInputBox">
-          Hello, this is a species input box!
-        </div>
+          <form className="speciesForm" onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Species name" value={this.state.name} onChange={this.handleNameChange}/>
+        </form>
       );
     }
   });
@@ -61,7 +77,6 @@
       }.bind(this));
       return (
           <div className="speciesList">
-          Hello, this is a species list!
         {speciesCards}
         </div>
       );
@@ -91,11 +106,14 @@
       });
     },
 
+    handleSpeciesSubmit: function(species) {
+      this.getSpecies("/prefix/" + species.name);
+    },
+
     render: function() {
       return (
           <div className="speciesDisplay">
-          Hello, this is a species display!
-          <SpeciesInputBox />
+          <SpeciesForm onQuery={this.handleSpeciesSubmit}/>
           <SpeciesList data={this.state.data} />
           </div>
       );
