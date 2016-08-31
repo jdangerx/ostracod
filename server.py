@@ -5,13 +5,12 @@ import json
 app = Flask(__name__)
 
 
-db = from_xlsx("Trait Matrix.xlsx")
-
+db, trait_codings = from_xlsx("Trait Matrix.xlsx")
 
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", trait_codings=json.dumps(trait_codings))
 
 
 @app.route("/all")

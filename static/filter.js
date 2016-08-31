@@ -1,10 +1,16 @@
 (function() {
+  var traitCodings = JSON.parse(document.getElementById("traitCodings").innerHTML);
 
   var TraitEntry = React.createClass({
     render: function() {
+      var humanReadableTraitValue = this.props.traitValue;
+      var cleanTraitName = this.props.traitName.toLowerCase()
+      if (traitCodings.hasOwnProperty(cleanTraitName)) {
+        humanReadableTraitValue = traitCodings[cleanTraitName][this.props.traitValue];
+      }
       return (
           <div className="traitEntry">
-          {this.props.traitName} : {this.props.traitValue}
+          {this.props.traitName} : {humanReadableTraitValue}
         </div>
       );
     }
@@ -50,6 +56,9 @@
         </div>
       );
     }
+  });
+
+  var TraitSelector = React.createClass({
   });
 
   var SpeciesForm = React.createClass({
@@ -119,7 +128,6 @@
     },
 
     getSpecies: function(queryParams) {
-      console.log(queryParams);
       $.ajax({
         url: "/filter",
         data: queryParams,
