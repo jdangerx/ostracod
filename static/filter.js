@@ -1,37 +1,163 @@
 (function() {
-    var speciesInputBox = document.getElementById("species-input");
+  var traitCodings = JSON.parse(document.getElementById("traitCodings").innerHTML);
 
-    function ajax(method, url, _onSuccess, _onServerError, _onConnectionError) {
-        var request = new XMLHttpRequest(),
-            onSuccess = _onSuccess || function() {},
-            onServerError = _onServerError || function() {},
-            onConnectionError = _onConnectionError || function() {};
-        request.open(method, url, true);
-
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 400) {
-                onSuccess(request);
-            } else {
-                // We reached our target server, but it returned an error
-                onServerError(request);
-            }
-        };
-
-        request.onerror = function() {
-            // There was a connection error of some sort
-            onConnectionError(request);
-        };
-
-        request.send();
+  var TraitEntry = React.createClass({
+    render: function() {
+      var humanReadableTraitValue = this.props.traitValue;
+      var cleanTraitName = this.props.traitName.toLowerCase()
+      if (traitCodings.hasOwnProperty(cleanTraitName)) {
+        humanReadableTraitValue = traitCodings[cleanTraitName][this.props.traitValue];
+      }
+      return (
+          <div className="traitEntry">
+          {this.props.traitName} : {humanReadableTraitValue}
+        </div>
+      );
     }
+  });
 
-    function displayResults(eltId, request) {
-        var resultsContainer = document.getElementById(eltId);
-        var results = JSON.parse(request.responseText);
-        resultsContainer.innerHTML = Object.keys(results).join("<br>");
+  var TraitList = React.createClass({
+    render: function() {
+      var traitEntries = Object.keys(this.props.traits).map(function(traitName) {
+        return (
+            <TraitEntry key={traitName} traitName={traitName} traitValue={this.props.traits[traitName].Value} />
+        );
+      }.bind(this));
+      return (
+          <div className="traitList">
+          {traitEntries}
+        </div>
+      );
     }
+  });
 
-    speciesInputBox.onkeyup = function(event) {
-        ajax("GET", "/prefix/" + event.target.value, displayResults.bind(null, "results-container"));
-    };
+  var SpeciesCard = React.createClass({
+    render: function() {
+      return (
+          <div className="speciesCard">
+          <h3>{this.props.name}</h3>
+          <TraitList traits={this.props.traits} />
+          </div>
+      );
+    }
+  });
+
+  var SpeciesList = React.createClass({
+    render: function() {
+      var species = Object.keys(this.props.data).sort();
+      var speciesCards = species.map(function(speciesName) {
+        return (
+            <SpeciesCard key={speciesName} name={speciesName} traits={this.props.data[speciesName]}/>
+        );
+      }.bind(this));
+      return (
+          <div className="speciesList">
+          {speciesCards}
+        </div>
+      );
+    }
+  });
+
+  var TraitSelector = React.createClass({
+  });
+
+  var SpeciesForm = React.createClass({
+    getInitialState: function() {
+      return {name: "", traits: {}};
+    },
+
+    handleNameChange: function(e) {
+      this.setState({name: e.target.value}, this.query);
+    },
+
+    handleTraitChange: function(traitName, e) {
+      var traits = this.state.traits;
+      traits[traitName] = e.target.value;
+      this.setState({traits: traits}, this.query);
+    },
+
+    query: function() {
+      var name = this.state.name.trim();
+      var traits = this.state.traits;
+      this.props.onQuery({name: name, traits: traits});
+    },
+
+    handleSubmit: function(e) {
+      e.preventDefault();
+      this.query();
+    },
+
+    render: function() {
+      var traitCoding = {
+        size: [0, 1, 2],
+        calcification: [0, 1, 2]
+      };
+
+      var traitSelectors = Object.keys(traitCoding).sort().map(function(traitName) {
+        var options = traitCoding[traitName].sort().map(function(traitValue) {
+          return (
+              <option key={traitValue} value={traitValue}>{traitValue}</option>
+          );
+        }.bind(this));
+        return (
+            <div key={traitName} className="traitSelector">
+            {traitName}
+            <select value={this.state.traits[traitName]} onChange={this.handleTraitChange.bind(this, traitName)}>
+            {options}
+          </select>
+            </div>
+        );
+      }.bind(this));
+
+      return (
+          <form className="speciesForm" onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Species name" value={this.state.name} onChange={this.handleNameChange}/>
+          {traitSelectors}
+        </form>
+      );
+    }
+  });
+
+  var SpeciesDisplay = React.createClass({
+    getInitialState: function() {
+      return {data: {}};
+    },
+
+    componentDidMount: function() {
+      this.getSpecies({name: "", traits: {}});
+    },
+
+    getSpecies: function(queryParams) {
+      $.ajax({
+        url: "/filter",
+        data: queryParams,
+        dataType: "json",
+        cache: false,
+        success: function(data) {
+          this.setState({data: data});
+        }.bind(this),
+        error: function(xhr, status, err) {
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+      });
+    },
+
+    handleSpeciesSubmit: function(species) {
+      this.getSpecies({name: species.name, traits: JSON.stringify(species.traits)});
+    },
+
+    render: function() {
+      return (
+          <div className="speciesDisplay">
+          <SpeciesForm onQuery={this.handleSpeciesSubmit}/>
+          <SpeciesList data={this.state.data} />
+          </div>
+      );
+    }
+  });
+
+  ReactDOM.render(
+      <SpeciesDisplay url={"/all"} />,
+    document.getElementById("content")
+  );
 })();
