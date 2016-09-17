@@ -1,5 +1,6 @@
 (function() {
-  var traitCodings = JSON.parse(document.getElementById("traitCodings").innerHTML);
+  var traitCodings = JSON.parse(document.getElementById("traitCodings").attributes[2].value);
+  window.traitCodings = traitCodings;
 
   var TraitEntry = React.createClass({
     render: function() {

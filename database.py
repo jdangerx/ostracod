@@ -36,6 +36,6 @@ def from_xlsx(filepath):
     species = {s: merge_dicts({"value": traits[s], "comments": comments[s]}) for s in traits}
 
     coding_names, *coding_info = [[c.value for c in r]
-                                  for r in codings_sheet["A1":"U{:d}".format(codings_sheet.max_row)]]
+                                  for r in codings_sheet["A1":"E{:d}".format(codings_sheet.max_row)]]
     codings = make_dicts_from_rows(coding_names, coding_info)
     return species, codings
