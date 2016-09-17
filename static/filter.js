@@ -7,7 +7,7 @@
       var humanReadableTraitValue = this.props.traitValue;
       var cleanTraitName = this.props.traitName.toLowerCase()
       if (traitCodings.hasOwnProperty(cleanTraitName)) {
-        humanReadableTraitValue = traitCodings[cleanTraitName][this.props.traitValue];
+        humanReadableTraitValue = traitCodings[cleanTraitName][this.props.traitValue] || "N/A";
       }
       return (
           <div className="traitEntry">
@@ -59,9 +59,6 @@
     }
   });
 
-  var TraitSelector = React.createClass({
-  });
-
   var SpeciesForm = React.createClass({
     getInitialState: function() {
       return {name: "", traits: {}};
@@ -89,21 +86,19 @@
     },
 
     render: function() {
-      var traitCoding = {
-        size: [0, 1, 2],
-        calcification: [0, 1, 2]
-      };
-
-      var traitSelectors = Object.keys(traitCoding).sort().map(function(traitName) {
-        var options = traitCoding[traitName].sort().map(function(traitValue) {
+      var traitSelectors = Object.keys(traitCodings).sort().map(function(traitName) {
+        var trait = traitCodings[traitName];
+        var optNums = Object.keys(trait).filter(function(key) {
+          return !isNaN(parseInt(key)) && trait[key];
+        });
+        var options = optNums.sort().map(function(traitValue) {
           return (
-              <option key={traitValue} value={traitValue}>{traitValue}</option>
+              <option key={traitValue} value={traitValue}>{trait[traitValue]}</option>
           );
         }.bind(this));
         return (
             <div key={traitName} className="traitSelector">
-            {traitName}
-            <select value={this.state.traits[traitName]} onChange={this.handleTraitChange.bind(this, traitName)}>
+            {trait["long name"]}: <select value={this.state.traits[traitName]} onChange={this.handleTraitChange.bind(this, traitName)}>
             {options}
           </select>
             </div>
