@@ -112,7 +112,8 @@
       }.bind(this));
       return(
           <div className="traitValueSelector">
-          {this.props.traitValues["long name"]}: {checkboxes}
+          <div className="traitName">{this.props.traitValues["long name"]}</div>
+          <div className="traitValueCheckboxes">{checkboxes}</div>
           </div>
       );
     }
@@ -163,20 +164,20 @@
     },
 
     render: function() {
-      var traitSelectors = Object.keys(traitCodings).sort().slice(0,2).map(function(traitName) {
+      var traitSelectors = Object.keys(traitCodings).sort().map(function(traitName) {
         return (
-          <div className="traitSelectors">
             <TraitValueSelector key={traitName}
           traitName={traitName}
           traitValues={traitCodings[traitName]}
           parentHandleTraitChange={this.handleTraitChange}/>
-            </div>
         );
       }.bind(this));
       return (
           <form className="speciesForm" onSubmit={this.handleSubmit}>
           <SpeciesNameField parentHandleNameChange={this.handleNameChange}/>
+          <div className="traitSelectors">
           {traitSelectors}
+          </div>
         </form>
       );
     }
@@ -213,6 +214,7 @@
     render: function() {
       return (
           <div className="speciesDisplay">
+          <h1>Ostracod DB!</h1>
           <SpeciesForm onQuery={this.handleSpeciesSubmit}/>
           <SpeciesList data={this.state.data} />
           </div>

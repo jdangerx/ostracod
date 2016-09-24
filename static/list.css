@@ -1,0 +1,38 @@
+div#content {
+  padding: 2em;
+}
+
+.speciesDisplay {
+  text-align: center;
+}
+.speciesNameField {
+  width: 100%;
+}
+
+.speciesNameField input {
+  font-size: 120%;
+  width: 100%;
+}
+
+.speciesList .speciesCard {
+  display: inline-block;
+  width: 20em;
+  vertical-align: top;
+  text-align: left;
+}
+
+.traitSelectors .traitValueSelector {
+  display: inline-block;
+  width: 20em;
+  vertical-align: top;
+}
+
+.traitValueSelector .traitName {
+  font-size: 120%;
+  padding: 0.5em;
+}
+
+.traitValueSelector .traitValueCheckbox {
+  font-size: 80%;
+  float: top;
+}
