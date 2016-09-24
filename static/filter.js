@@ -139,7 +139,7 @@
 
   var SpeciesForm = React.createClass({
     getInitialState: function() {
-      return {name: "", traits: {}};
+      return {name: "", traits: {}, hidden: false};
     },
 
     handleNameChange: function(e) {
@@ -211,11 +211,20 @@
       this.getSpecies({name: species.name, traits: JSON.stringify(species.traits)});
     },
 
+    getJSON: function() {
+      var data = encodeURI("data:text/json;charset=utf-8," + JSON.stringify(this.state.data));
+      var link = document.createElement("a");
+      link.setAttribute("href", data);
+      link.setAttribute("download", "export.json");
+      link.click();
+    },
+
     render: function() {
       return (
           <div className="speciesDisplay">
           <h1>Ostracod DB!</h1>
           <SpeciesForm onQuery={this.handleSpeciesSubmit}/>
+          <button className="downloadButton" onClick={this.getJSON}>Download these species!</button>
           <SpeciesList data={this.state.data} />
           </div>
       );

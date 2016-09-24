@@ -1,9 +1,10 @@
-div#content {
+.speciesDisplay {
+  text-align: center;
   padding: 2em;
 }
 
-.speciesDisplay {
-  text-align: center;
+.speciesDisplay button {
+  padding: 0.5em;
 }
 .speciesNameField {
   width: 100%;
@@ -19,6 +20,11 @@ div#content {
   width: 20em;
   vertical-align: top;
   text-align: left;
+  padding: 0.5em;
+}
+
+.speciesCard h3 {
+  text-align: center;
 }
 
 .traitSelectors .traitValueSelector {
