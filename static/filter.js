@@ -89,18 +89,21 @@
         acc[traitValueNum] = false;
         return acc;
       }, {});
-      return selectedValues;
+      return {selected: selectedValues, collapsed: "collapsed"};
     },
     handleChange: function(e, valueNum) {
-      var changeset = {};
-      changeset[valueNum] = e.target.checked;
-      this.setState(changeset, function() {
+      var selected = this.state.selected;
+      selected[valueNum] = e.target.checked;
+      this.setState({selected: selected}, function() {
         var state = this.state;
-        var selected = Object.keys(state).filter(function(valueNum){
-          return state[valueNum];
+        var selectedTrue = Object.keys(state.selected).filter(function(valueNum){
+          return state.selected[valueNum];
         });
-        this.props.parentHandleTraitChange(this.props.traitName, selected);
+        this.props.parentHandleTraitChange(this.props.traitName, selectedTrue);
       }.bind(this));
+    },
+    toggleCollapse: function() {
+      this.setState({collapsed: this.state.collapsed? "" : "collapsed"});
     },
     render: function() {
       var traitValueNums = validKeys(this.props.traitValues);
@@ -112,8 +115,8 @@
       }.bind(this));
       return(
           <div className="traitValueSelector">
-          <div className="traitName">{this.props.traitValues["long name"]}</div>
-          <div className="traitValueCheckboxes">{checkboxes}</div>
+          <div className="traitName" onClick={this.toggleCollapse}>{this.props.traitValues["long name"]}</div>
+          <div className={"traitValueCheckboxes " + this.state.collapsed}>{checkboxes}</div>
           </div>
       );
     }
@@ -222,10 +225,12 @@
     render: function() {
       return (
           <div className="speciesDisplay">
-          <h1>Ostracod DB!</h1>
-          <SpeciesForm onQuery={this.handleSpeciesSubmit}/>
-          <button className="downloadButton" onClick={this.getJSON}>Download these species!</button>
-          <SpeciesList data={this.state.data} />
+            <h1>Ostracod DB!</h1>
+            <button className="downloadButton" onClick={this.getJSON}>Download these species!</button>
+            <div className="columns">
+              <SpeciesForm onQuery={this.handleSpeciesSubmit}/>
+              <SpeciesList data={this.state.data} />
+            </div>
           </div>
       );
     }

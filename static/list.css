@@ -1,18 +1,22 @@
+* {
+  box-sizing: border-box;
+}
 .speciesDisplay {
-  text-align: center;
   padding: 2em;
+  text-align: center;
 }
 
 .speciesDisplay button {
   padding: 0.5em;
 }
-.speciesNameField {
-  width: 100%;
+
+.speciesDisplay .columns {
+  text-align: left;
 }
 
-.speciesNameField input {
-  font-size: 120%;
-  width: 100%;
+.speciesList {
+  display: inline-block;
+  width: 75%;
 }
 
 .speciesList .speciesCard {
@@ -27,18 +31,42 @@
   text-align: center;
 }
 
-.traitSelectors .traitValueSelector {
+.speciesForm {
   display: inline-block;
-  width: 20em;
   vertical-align: top;
+  width: 25%;
+  text-align: left;
+  padding: 2em;
+  margin: 0;
+}
+
+.speciesNameField {
+  width: 100%;
+}
+
+.speciesNameField input {
+  font-size: 100%;
+  width: 100%;
+  padding: 0.5em;
+}
+
+.traitSelectors .traitValueSelector {
+  display: block;
 }
 
 .traitValueSelector .traitName {
-  font-size: 120%;
+  font-size: 100%;
   padding: 0.5em;
+}
+
+.traitSelectors .traitValueCheckboxes.collapsed {
+  display: none;
+  width: 20em;
+  vertical-align: top;
 }
 
 .traitValueSelector .traitValueCheckbox {
   font-size: 80%;
   float: top;
+  padding-left: 3em;
 }
