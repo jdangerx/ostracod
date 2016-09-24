@@ -18,16 +18,13 @@ def look_at_everything():
     return json.dumps(title_case_species(db))
 
 
-# @app.route("/prefix/")
-# @app.route("/prefix/<prefix>")
-def prefix_search(items, prefix=""):
+def substr_search(items, substr=""):
     matches = {species: traits
                for species, traits in items
-               if species.startswith(prefix.lower())}
+               if substr.lower() in species}
     return matches
 
 
-# @app.route("/trait/<trait>/<value>")
 def trait_value_search(items, trait_name, selected_values):
     selected_values = [int(v) for v in selected_values]
     if selected_values:
@@ -45,7 +42,7 @@ def filter():
         traits = [(t, v) for t, v in json.loads(request.args.get("traits")).items() if v is not None]
     except TypeError:
         traits = []
-    matches = prefix_search(db.items(), name)
+    matches = substr_search(db.items(), name)
     print(traits)
     for trait_name, selected_values in traits:
         matches = trait_value_search(matches.items(), trait_name, selected_values)
