@@ -2,10 +2,15 @@
   var traitCodings = JSON.parse(document.getElementById("traitCodings").attributes[2].value);
   window.traitCodings = traitCodings;
 
+  function validKeys(obj) {
+    return Object.keys(obj).filter(function(key) { return !isNaN(parseInt(key, 10)) && obj[key]; });
+  }
+
+  // display
   var TraitEntry = React.createClass({
     render: function() {
       var humanReadableTraitValue = this.props.traitValue;
-      var cleanTraitName = this.props.traitName.toLowerCase()
+      var cleanTraitName = this.props.traitName.toLowerCase();
       if (traitCodings.hasOwnProperty(cleanTraitName)) {
         humanReadableTraitValue = traitCodings[cleanTraitName][this.props.traitValue] || "N/A";
       }
@@ -59,6 +64,78 @@
     }
   });
 
+  // actual filtering
+  var TraitValueCheckbox = React.createClass({
+    getInitialState: function() {
+      return {checked: false};
+    },
+    handleChange: function(e) {
+      this.setState({checked: e.target.checked});
+      this.props.parentHandleChange(e, this.props.traitValueNum);
+    },
+    render: function() {
+      return(
+        <div className="traitValueCheckbox">
+          {this.props.traitValueName}: <input type="checkbox" onChange={this.handleChange} checked={this.state.checked}/>
+          </div>
+      );
+    }
+  });
+
+  var TraitValueSelector = React.createClass({
+    getInitialState: function() {
+      var traitValueNums = validKeys(this.props.traitValues);
+      var selectedValues = traitValueNums.reduce(function(acc, traitValueNum) {
+        acc[traitValueNum] = false;
+        return acc;
+      }, {});
+      return selectedValues;
+    },
+    handleChange: function(e, valueNum) {
+      var changeset = {};
+      changeset[valueNum] = e.target.checked;
+      this.setState(changeset, function() {
+        var state = this.state;
+        var selected = Object.keys(state).filter(function(valueNum){
+          return state[valueNum];
+        });
+        this.props.parentHandleTraitChange(this.props.traitName, selected);
+      }.bind(this));
+    },
+    render: function() {
+      var traitValueNums = validKeys(this.props.traitValues);
+      var checkboxes = traitValueNums.map(function(traitValueNum){
+        var traitValueName = this.props.traitValues[traitValueNum];
+        return (
+            <TraitValueCheckbox key={traitValueNum} traitValueNum={traitValueNum} traitValueName={traitValueName} parentHandleChange={this.handleChange}/>
+        );
+      }.bind(this));
+      return(
+          <div className="traitValueSelector">
+          {this.props.traitValues["long name"]}: {checkboxes}
+          </div>
+      );
+    }
+  });
+
+  var SpeciesNameField = React.createClass({
+    getInitialState: function() {
+      return {name: "", traits: {}};
+    },
+    handleNameChange: function(e) {
+      this.setState({name: e.target.value});
+      this.props.parentHandleNameChange(e);
+    },
+
+    render: function() {
+      return(
+        <div className="speciesNameField">
+          <input type="text" placeholder="Species name" value={this.state.name} onChange={this.handleNameChange}/>
+          </div>
+      );
+    }
+  });
+
   var SpeciesForm = React.createClass({
     getInitialState: function() {
       return {name: "", traits: {}};
@@ -68,9 +145,9 @@
       this.setState({name: e.target.value}, this.query);
     },
 
-    handleTraitChange: function(traitName, e) {
+    handleTraitChange: function(traitName, selected) {
       var traits = this.state.traits;
-      traits[traitName] = e.target.value;
+      traits[traitName] = selected;
       this.setState({traits: traits}, this.query);
     },
 
@@ -86,28 +163,19 @@
     },
 
     render: function() {
-      var traitSelectors = Object.keys(traitCodings).sort().map(function(traitName) {
-        var trait = traitCodings[traitName];
-        var optNums = Object.keys(trait).filter(function(key) {
-          return !isNaN(parseInt(key)) && trait[key];
-        });
-        var options = optNums.sort().map(function(traitValue) {
-          return (
-              <option key={traitValue} value={traitValue}>{trait[traitValue]}</option>
-          );
-        }.bind(this));
+      var traitSelectors = Object.keys(traitCodings).sort().slice(0,2).map(function(traitName) {
         return (
-            <div key={traitName} className="traitSelector">
-            {trait["long name"]}: <select value={this.state.traits[traitName]} onChange={this.handleTraitChange.bind(this, traitName)}>
-            {options}
-          </select>
+          <div className="traitSelectors">
+            <TraitValueSelector key={traitName}
+          traitName={traitName}
+          traitValues={traitCodings[traitName]}
+          parentHandleTraitChange={this.handleTraitChange}/>
             </div>
         );
       }.bind(this));
-
       return (
           <form className="speciesForm" onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Species name" value={this.state.name} onChange={this.handleNameChange}/>
+          <SpeciesNameField parentHandleNameChange={this.handleNameChange}/>
           {traitSelectors}
         </form>
       );

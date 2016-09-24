@@ -28,10 +28,14 @@ def prefix_search(items, prefix=""):
 
 
 # @app.route("/trait/<trait>/<value>")
-def trait_value_search(items, trait, value):
-    matches = {species: traits
-               for species, traits in items
-               if traits[trait.lower()]["value"] == value}
+def trait_value_search(items, trait_name, selected_values):
+    selected_values = [int(v) for v in selected_values]
+    if selected_values:
+        matches = {species: traits
+                   for species, traits in items
+                   if traits[trait_name.lower()]["value"] in selected_values}
+    else:
+        matches = dict(items)
     return matches
 
 @app.route("/filter")
@@ -43,6 +47,6 @@ def filter():
         traits = []
     matches = prefix_search(db.items(), name)
     print(traits)
-    for trait, value in traits:
-        matches = trait_value_search(matches.items(), trait, int(value))
+    for trait_name, selected_values in traits:
+        matches = trait_value_search(matches.items(), trait_name, selected_values)
     return json.dumps(title_case_species(matches))
