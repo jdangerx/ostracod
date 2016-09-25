@@ -12,11 +12,8 @@
 
 .speciesDisplay .columns {
   text-align: left;
-}
-
-.speciesList {
-  display: inline-block;
-  width: 75%;
+  display: flex;
+  justify-content: spread;
 }
 
 .speciesList .speciesCard {
@@ -32,10 +29,7 @@
 }
 
 .speciesForm {
-  display: inline-block;
   vertical-align: top;
-  width: 25%;
-  text-align: left;
   padding: 2em;
   margin: 0;
 }

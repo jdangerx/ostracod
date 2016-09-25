@@ -89,7 +89,7 @@
         acc[traitValueNum] = false;
         return acc;
       }, {});
-      return {selected: selectedValues, collapsed: "collapsed"};
+      return {selected: selectedValues, collapsed: true};
     },
     handleChange: function(e, valueNum) {
       var selected = this.state.selected;
@@ -103,7 +103,7 @@
       }.bind(this));
     },
     toggleCollapse: function() {
-      this.setState({collapsed: this.state.collapsed? "" : "collapsed"});
+      this.setState({collapsed: !this.state.collapsed});
     },
     render: function() {
       var traitValueNums = validKeys(this.props.traitValues);
@@ -115,8 +115,8 @@
       }.bind(this));
       return(
           <div className="traitValueSelector">
-          <div className="traitName" onClick={this.toggleCollapse}>{this.props.traitValues["long name"]}</div>
-          <div className={"traitValueCheckboxes " + this.state.collapsed}>{checkboxes}</div>
+              <div className="traitName" onClick={this.toggleCollapse}>{this.state.collapsed? ">" : "v"} {this.props.traitValues["long name"]}</div>
+              <div className={"traitValueCheckboxes " + (this.state.collapsed? "collapsed" : "")}>{checkboxes}</div>
           </div>
       );
     }
