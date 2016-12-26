@@ -1,3 +1,13 @@
 .TextBox {
-  padding: 2em;
+  display: inline-block;
+  width: 50%;
+}
+
+.Image {
+  display: inline-block;
+  width: 50%;
+}
+
+.Image img {
+  width: 100%;
 }
