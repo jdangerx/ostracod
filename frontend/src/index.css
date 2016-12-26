@@ -11,3 +11,13 @@ body {
 .App {
   width: 80%;
 }
+
+.LeftColumn {
+  display: inline-block;
+  width: 40%;
+}
+
+.RightColumn {
+  display: inline-block;
+  width: 60%;
+}
