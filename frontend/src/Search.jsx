@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchForm from './SearchForm.js';
+import SearchResults from './SearchResults.jsx';
 
 class Search extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class Search extends Component {
     return (
       <div className="Search">
         <SearchForm handleNameChange={this.handleNameChange} />
-        {JSON.stringify(this.state.matches)}
+        <SearchResults matches={this.state.matches} />
       </div>
     );
   }
