@@ -8,7 +8,7 @@ class TraitList extends Component {
         (
           <tr key={trait.name}>
             <td>{trait.name}</td>
-            <td>{trait.info.Value}</td>
+            <td>{trait.info.value}</td>
           </tr>
         )
     );

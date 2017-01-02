@@ -6,6 +6,14 @@ import Home from './Home.js';
 import Search from './Search.jsx';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {traitCodings: {}}
+    fetch('http://localhost:5000/trait_codings')
+      .then((r) => r.json())
+      .then((j) => this.setState({ traitCodings: j }));
+  }
+
   render() {
     return (
       <Tabs>
@@ -20,13 +28,13 @@ class App extends Component {
           <Home />
         </TabPanel>
         <TabPanel>
-          <Search />
+          <Search traitCodings={this.state.traitCodings}/>
         </TabPanel>
         <TabPanel>
-          Trait Info
+          Trait Info - we ain't got no datas
         </TabPanel>
         <TabPanel>
-          Species Upload
+          Species Upload - coming soon!
         </TabPanel>
         <TabPanel>
           Cart

@@ -15,13 +15,12 @@ class Search extends Component {
   updateMatches(matches) {
     this.setState({
       query: this.state.query,
-      matches: matches,
+      matches,
     });
   }
 
   formatParams(params) {
     const nonNulls = params.filter((param) => param[1]);
-    console.log(nonNulls);
     if (nonNulls === []) {
       return '';
     }
@@ -54,7 +53,10 @@ class Search extends Component {
   render() {
     return (
       <div className="Search">
-        <SearchForm handleNameChange={this.handleNameChange} />
+        <SearchForm
+          handleNameChange={this.handleNameChange}
+          traitCodings={this.props.traitCodings}
+        />
         <SearchResults matches={this.state.matches} />
       </div>
     );

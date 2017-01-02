@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_cors import CORS
 from database import from_xlsx
-from utils import title_case_species
+from utils import title_case_species, human_readable_traits
 import json
 
 app = Flask(__name__)
@@ -9,16 +9,6 @@ CORS(app)
 
 
 db, trait_codings = from_xlsx("Trait Matrix.xlsx")
-
-
-@app.route("/")
-def index():
-    return render_template("index.html", trait_codings=json.dumps(trait_codings))
-
-
-@app.route("/all")
-def look_at_everything():
-    return json.dumps(title_case_species(db))
 
 
 def substr_search(items, substr=""):
@@ -50,12 +40,17 @@ def filter():
         matches = trait_value_search(matches.items(),
                                      trait_name,
                                      selected_values)
-    title_cased = title_case_species(matches)
+    longform_traits = {species: human_readable_traits(traits, trait_codings)
+                       for species, traits in matches.items()}
+    title_cased = title_case_species(longform_traits)
     sorted_matches = sorted(list(title_cased.items()))
     records = [
         {"name": name,
-         "traits": sorted([{"name": k, "info": v} for k, v in traits.items()],
-                          key=lambda x: x["name"])}
+         "traits": sorted(traits, key=lambda x: x["name"])}
         for name, traits in sorted_matches
     ]
     return json.dumps(records)
+
+@app.route("/trait_codings")
+def get_trait_codings():
+    return json.dumps(trait_codings)
