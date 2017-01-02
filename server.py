@@ -53,4 +53,6 @@ def filter():
 
 @app.route("/trait_codings")
 def get_trait_codings():
-    return json.dumps(trait_codings)
+    records = [{"name": name, "info": info}
+               for name, info in trait_codings.items()]
+    return json.dumps(sorted(records, key=lambda x: x["name"]))
