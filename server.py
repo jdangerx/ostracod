@@ -47,5 +47,10 @@ def filter():
         traits = []
     matches = substr_search(db.items(), name)
     for trait_name, selected_values in traits:
-        matches = trait_value_search(matches.items(), trait_name, selected_values)
-    return json.dumps(title_case_species(matches))
+        matches = trait_value_search(matches.items(),
+                                     trait_name,
+                                     selected_values)
+    title_cased = title_case_species(matches)
+    sorted_matches = sorted(list(title_cased.items()))
+    records = [{"name": m[0], "traits": m[1]} for m in sorted_matches]
+    return json.dumps(records)

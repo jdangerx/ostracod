@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import Home from './Home.js';
+import SpeciesInfo from './SpeciesInfo.js';
+import SearchForm from './SearchForm.js';
 
 class App extends Component {
   render() {
@@ -20,10 +22,10 @@ class App extends Component {
           <Home />
         </TabPanel>
         <TabPanel>
-          Search Page
+          <SearchForm />
         </TabPanel>
         <TabPanel>
-          Species Info
+          <SpeciesInfo />
         </TabPanel>
         <TabPanel>
           Trait Info
@@ -40,4 +42,3 @@ class App extends Component {
 }
 
 export default App;
-
