@@ -52,5 +52,10 @@ def filter():
                                      selected_values)
     title_cased = title_case_species(matches)
     sorted_matches = sorted(list(title_cased.items()))
-    records = [{"name": m[0], "traits": m[1]} for m in sorted_matches]
+    records = [
+        {"name": name,
+         "traits": sorted([{"name": k, "info": v} for k, v in traits.items()],
+                          key=lambda x: x["name"])}
+        for name, traits in sorted_matches
+    ]
     return json.dumps(records)
