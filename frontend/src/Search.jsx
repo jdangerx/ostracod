@@ -6,6 +6,7 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      query: {},
       matches: [],
     };
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -13,12 +14,25 @@ class Search extends Component {
 
   updateMatches(matches) {
     this.setState({
+      query: this.state.query,
       matches: matches,
     });
   }
 
-  handleNameChange(e) {
-    const url = 'http://localhost:5000/filter?name=' + e.target.value;
+  formatParams(params) {
+    const nonNulls = params.filter((param) => param[1]);
+    console.log(nonNulls);
+    if (nonNulls === []) {
+      return '';
+    }
+    return '?' + nonNulls.map((param) => param.join('=')).join('&');
+  }
+
+  query() {
+    const queryString = this.formatParams(
+      [['name', this.state.query.name],
+       ['traits', this.state.query.traits]]);
+    const url = 'http://localhost:5000/filter' + queryString;
     fetch(url).then(
       (r) => r.json()
     ).then(
@@ -26,6 +40,15 @@ class Search extends Component {
     ).catch(
       (err) => console.log(err)
     );
+  }
+
+  handleNameChange(e) {
+    const newQuery = this.state.query;
+    newQuery.name = e.target.value;
+    this.setState({
+      query: newQuery,
+      matches: this.state.matches,
+    }, this.query.bind(this));
   }
 
   render() {

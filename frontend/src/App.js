@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import Home from './Home.js';
-import SpeciesInfo from './SpeciesInfo.js';
 import Search from './Search.jsx';
 
 class App extends Component {
@@ -13,7 +12,6 @@ class App extends Component {
         <TabList>
           <Tab>Home</Tab>
           <Tab>Search</Tab>
-          <Tab>Species Info</Tab>
           <Tab>Trait Info</Tab>
           <Tab>Species Upload</Tab>
           <Tab>Cart</Tab>
@@ -23,9 +21,6 @@ class App extends Component {
         </TabPanel>
         <TabPanel>
           <Search />
-        </TabPanel>
-        <TabPanel>
-          <SpeciesInfo />
         </TabPanel>
         <TabPanel>
           Trait Info
