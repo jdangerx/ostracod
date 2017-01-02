@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import Home from './Home.js';
 import SpeciesInfo from './SpeciesInfo.js';
-import SearchForm from './SearchForm.js';
+import Search from './Search.jsx';
 
 class App extends Component {
   render() {
@@ -22,7 +22,7 @@ class App extends Component {
           <Home />
         </TabPanel>
         <TabPanel>
-          <SearchForm />
+          <Search />
         </TabPanel>
         <TabPanel>
           <SpeciesInfo />
