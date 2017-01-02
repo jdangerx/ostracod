@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request
+from flask_cors import CORS
 from database import from_xlsx
 from utils import title_case_species
 import json
+
 app = Flask(__name__)
+CORS(app)
 
 
 db, trait_codings = from_xlsx("Trait Matrix.xlsx")
@@ -43,7 +46,6 @@ def filter():
     except TypeError:
         traits = []
     matches = substr_search(db.items(), name)
-    print(traits)
     for trait_name, selected_values in traits:
         matches = trait_value_search(matches.items(), trait_name, selected_values)
     return json.dumps(title_case_species(matches))
