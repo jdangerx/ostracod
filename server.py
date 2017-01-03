@@ -30,7 +30,7 @@ def trait_value_search(items, trait_name, selected_values):
 
 @app.route("/filter")
 def filter():
-    name = request.args.get("name")
+    name = request.args.get("name", "")
     try:
         traits = [(t, v) for t, v in json.loads(request.args.get("traits")).items() if v is not None]
     except TypeError:

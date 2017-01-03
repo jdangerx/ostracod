@@ -21,3 +21,7 @@ body {
   display: inline-block;
   width: 60%;
 }
+
+.selected {
+  background-color: grey;
+}

@@ -6,10 +6,11 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: {},
+      query: {traits: {}},
       matches: [],
     };
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.toggleTraitFilter = this.toggleTraitFilter.bind(this);
   }
 
   updateMatches(matches) {
@@ -30,7 +31,7 @@ class Search extends Component {
   query() {
     const queryString = this.formatParams(
       [['name', this.state.query.name],
-       ['traits', this.state.query.traits]]);
+       ['traits', JSON.stringify(this.state.query.traits)]]);
     const url = 'http://localhost:5000/filter' + queryString;
     fetch(url).then(
       (r) => r.json()
@@ -50,11 +51,28 @@ class Search extends Component {
     }, this.query.bind(this));
   }
 
+  toggleTraitFilter(trait, value) {
+    const newTraits = this.state.query.traits;
+    const selectedValues = newTraits[trait] ? newTraits[trait] : {};
+    if (selectedValues[value]) {
+      selectedValues[value] = !selectedValues[value];
+    } else {
+      selectedValues[value] = true;
+    }
+    newTraits[trait] = Object.keys(selectedValues).filter((val) => selectedValues[val]);
+    this.setState({
+      query: { name: this.state.query.name,
+               traits: newTraits },
+      matches: this.state.matches,
+    }, this.query.bind(this));
+  }
+
   render() {
     return (
       <div className="Search">
         <SearchForm
           handleNameChange={this.handleNameChange}
+          toggleTraitFilter={this.toggleTraitFilter}
           traitCodings={this.props.traitCodings}
         />
         <SearchResults matches={this.state.matches} />
