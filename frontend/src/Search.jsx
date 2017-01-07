@@ -59,7 +59,7 @@ class Search extends Component {
     } else {
       selectedValues[value] = true;
     }
-    newTraits[trait] = Object.keys(selectedValues).filter((val) => selectedValues[val]);
+    newTraits[trait] = selectedValues;
     this.setState({
       query: { name: this.state.query.name,
                traits: newTraits },
@@ -74,6 +74,7 @@ class Search extends Component {
           handleNameChange={this.handleNameChange}
           toggleTraitFilter={this.toggleTraitFilter}
           traitCodings={this.props.traitCodings}
+          selectedTraits={this.state.query.traits}
         />
         <SearchResults matches={this.state.matches} />
       </div>

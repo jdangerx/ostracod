@@ -22,6 +22,7 @@ class SearchForm extends Component {
           key={trait.name}
           trait={trait}
           toggleTraitFilter={this.props.toggleTraitFilter}
+          selected={this.props.selectedTraits[trait.name]}
         />);
     }
     return (

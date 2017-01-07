@@ -11,20 +11,23 @@ class TraitCheckbox extends Component {
   }
 
   render() {
+    const className =
+          this.props.selected ?
+          "TraitCheckbox selected" :
+          "TraitCheckbox";
     return (
-      <span className="TraitCheckbox" onClick={this.handleChange}>
+      <div className={className} onClick={this.handleChange}>
         {this.props.trait.info[this.props.code]}
-      </span>);
+      </div>);
   }
 }
 
 
 class TraitOption extends Component {
-  select() {
-    }
   render() {
     const checkboxes = ['0', '1', '2'].map(
       function(code) {
+        const selected = this.props.selected || [];
         if (!this.props.trait.info[code]) {
           return null;
         }
@@ -33,6 +36,7 @@ class TraitOption extends Component {
                  trait={this.props.trait}
                  code={code}
                  toggleTraitFilter={this.props.toggleTraitFilter}
+                 selected={selected[code]}
                />;
       }.bind(this)
     ).filter((x) => x !== null);
