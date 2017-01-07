@@ -17,9 +17,13 @@ class SearchResult extends Component {
     if (this.state.expanded) {
       maybeTraitList = <TraitList traits={this.props.traits} />;
     }
+    const className =
+          this.state.expanded ?
+          "name expanded" :
+          "name collapsed";
     return (
-      <div className="SearchResult" onClick={this.toggle}>
-        <div className="name">{this.props.name}</div>
+      <div className="SearchResult">
+        <div className={className} onClick={this.toggle}>{this.props.name}</div>
         {maybeTraitList}
       </div>
     );

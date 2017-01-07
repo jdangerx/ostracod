@@ -1,0 +1,15 @@
+.TraitCheckbox {
+    padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+.TraitCheckbox:hover {
+    background-color: #CCFFCC;
+}
+
+.Search {
+    display: flex;
+}
+
+.Search .column {
+    padding: 0.5em;
+}

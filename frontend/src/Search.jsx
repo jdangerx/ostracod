@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import SearchForm from './SearchForm.js';
 import SearchResults from './SearchResults.jsx';
 
+import './search.css';
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +13,7 @@ class Search extends Component {
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.toggleTraitFilter = this.toggleTraitFilter.bind(this);
+    this.query()
   }
 
   updateMatches(matches) {
@@ -70,13 +73,17 @@ class Search extends Component {
   render() {
     return (
       <div className="Search">
-        <SearchForm
-          handleNameChange={this.handleNameChange}
-          toggleTraitFilter={this.toggleTraitFilter}
-          traitCodings={this.props.traitCodings}
-          selectedTraits={this.state.query.traits}
-        />
-        <SearchResults matches={this.state.matches} />
+        <div className="column">
+          <SearchForm
+            handleNameChange={this.handleNameChange}
+            toggleTraitFilter={this.toggleTraitFilter}
+            traitCodings={this.props.traitCodings}
+            selectedTraits={this.state.query.traits}
+          />
+        </div>
+        <div className="column">
+          <SearchResults matches={this.state.matches} />
+        </div>
       </div>
     );
   }

@@ -14,7 +14,11 @@ class SearchForm extends Component {
   }
 
   render() {
-    const traitOptionsToggle = <div className="TraitOptionsToggle" onClick={this.toggle}>Filter by Traits</div>;
+    const className =
+          this.state.expanded ?
+          "TraitOptionsToggle expanded" :
+          "TraitOptionsToggle collapsed";
+    const traitOptionsToggle = <div className={className} onClick={this.toggle}>Filter by Traits</div>;
     let traitOptions = null;
     if (this.state.expanded) {
       traitOptions = this.props.traitCodings.map((trait) =>

@@ -22,6 +22,14 @@ body {
   width: 60%;
 }
 
-.selected {
-  background-color: grey;
+.selected,.expanded {
+  background-color: #99CC99;
+}
+
+.selected:hover,.expanded:hover {
+    background-color: #CCFFCC;
+}
+
+.collapsed:hover {
+    background-color: #CCFFCC;
 }
