@@ -36,7 +36,7 @@ class TraitOption extends Component {
                  trait={this.props.trait}
                  code={code}
                  toggleTraitFilter={this.props.toggleTraitFilter}
-                 selected={selected[code]}
+                 selected={selected.includes(code)}
                />;
       }.bind(this)
     ).filter((x) => x !== null);

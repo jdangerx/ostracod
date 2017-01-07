@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class TraitList extends Component {
   render() {
-    console.log(this.props.traits[0]);
     const traitRows = this.props.traits.map(
       (trait) =>
         (

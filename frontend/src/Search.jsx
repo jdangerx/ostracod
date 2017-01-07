@@ -53,11 +53,11 @@ class Search extends Component {
 
   toggleTraitFilter(trait, value) {
     const newTraits = this.state.query.traits;
-    const selectedValues = newTraits[trait] ? newTraits[trait] : {};
-    if (selectedValues[value]) {
-      selectedValues[value] = !selectedValues[value];
+    const selectedValues = newTraits[trait] ? newTraits[trait] : [];
+    if (selectedValues.includes(value)) {
+      selectedValues.splice(selectedValues.indexOf(value), 1);
     } else {
-      selectedValues[value] = true;
+      selectedValues.push(value);
     }
     newTraits[trait] = selectedValues;
     this.setState({
