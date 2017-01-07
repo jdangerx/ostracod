@@ -1,5 +1,8 @@
+.SearchForm {
+    padding-left: 0.5em;
+}
 .TraitCheckbox {
-    padding: 0.2em 0.5em 0.2em 0.5em;
+    padding: 0.2em 0.5em 0.2em 1.5em;
 }
 
 .TraitCheckbox:hover {
@@ -12,4 +15,19 @@
 
 .Search .column {
     padding: 0.5em;
+}
+
+.TraitList {
+    margin-left: 1.5em;
+}
+
+.TraitList tr td {
+    font-weight: bold;
+}
+.TraitList tr td:first-child {
+    font-weight: normal;
+}
+
+.SearchResult .name {
+    padding: 0.5em 0.25em 0.5em 0.25em;
 }

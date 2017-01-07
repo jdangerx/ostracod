@@ -9,7 +9,7 @@ class Search extends Component {
     super(props);
     this.state = {
       query: {traits: {}},
-      matches: [],
+      matches: []
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.toggleTraitFilter = this.toggleTraitFilter.bind(this);
