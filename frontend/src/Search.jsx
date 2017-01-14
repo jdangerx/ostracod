@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchForm from './SearchForm.js';
+import SearchForm from './SearchForm.jsx';
 import SearchResults from './SearchResults.jsx';
 
 import './search.css';

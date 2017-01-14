@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TraitList from './TraitList.js';
+import TraitList from './TraitList.jsx';
 
 class SearchResult extends Component {
   constructor(props) {
@@ -19,8 +19,8 @@ class SearchResult extends Component {
     }
     const className =
           this.state.expanded ?
-          "name expanded" :
-          "name collapsed";
+          'name expanded' :
+          'name collapsed';
     return (
       <div className="SearchResult">
         <div className={className} onClick={this.toggle}>{this.props.name}</div>
