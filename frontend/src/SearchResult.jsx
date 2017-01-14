@@ -6,10 +6,24 @@ class SearchResult extends Component {
     super(props);
     this.state = { expanded: false };
     this.toggle = this.toggle.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   toggle() {
     this.setState({ expanded: !this.state.expanded });
+  }
+
+  addToCart(e) {
+    const nameField = { name: this.props.name };
+    const traitFields = this.props.traits.reduce(
+      (fields, trait) => {
+        const field = {};
+        field[trait.name] = trait.info.value;
+        return Object.assign(fields, field);
+      }, {}
+    );
+    e.stopPropagation();
+    this.props.addToCart(Object.assign(nameField, traitFields));
   }
 
   render() {
@@ -23,7 +37,10 @@ class SearchResult extends Component {
           'name collapsed';
     return (
       <div className="SearchResult">
-        <div className={className} onClick={this.toggle}>{this.props.name}</div>
+        <div className={className} onClick={this.toggle}>
+          {this.props.name}
+          <button onClick={this.addToCart}>Add to Cart!</button>
+        </div>
         {maybeTraitList}
       </div>
     );

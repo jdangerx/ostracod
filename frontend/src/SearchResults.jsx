@@ -5,7 +5,12 @@ class SearchResults extends Component {
   render() {
     const list = this.props.matches.map(
       (match) =>
-        <SearchResult key={match.name} name={match.name} traits={match.traits} />
+        <SearchResult
+          key={match.name}
+          name={match.name}
+          traits={match.traits}
+          addToCart={this.props.addToCart}
+        />
     );
     return (
       <div className="SearchResults">

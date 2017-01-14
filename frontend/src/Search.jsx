@@ -8,12 +8,12 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: {traits: {}},
-      matches: []
+      query: { traits: {} },
+      matches: [],
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.toggleTraitFilter = this.toggleTraitFilter.bind(this);
-    this.query()
+    this.query();
   }
 
   updateMatches(matches) {
@@ -82,7 +82,10 @@ class Search extends Component {
           />
         </div>
         <div className="column">
-          <SearchResults matches={this.state.matches} />
+          <SearchResults
+            matches={this.state.matches}
+            addToCart={this.props.addToCart}
+          />
         </div>
       </div>
     );
