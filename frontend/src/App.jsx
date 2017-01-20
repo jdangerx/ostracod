@@ -5,6 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Home from './Home.jsx';
 import Search from './Search.jsx';
 import Cart from './Cart.jsx';
+import SpeciesUpload from './SpeciesUpload.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -74,7 +75,7 @@ class App extends Component {
         </TabPanel>
         <TabPanel>
           {/* Species Upload Info */}
-          Species Upload - coming soon!
+          <SpeciesUpload />
         </TabPanel>
         <TabPanel>
           {/* Cart */}
