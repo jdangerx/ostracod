@@ -7,11 +7,14 @@ import Search from './Search.jsx';
 import Cart from './Cart.jsx';
 import SpeciesUpload from './SpeciesUpload.jsx';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { traitCodings: {}, cart: [] };
-    fetch('http://localhost:5000/trait_codings')
+    const url =
+      `http://${process.env.REACT_APP_BACKEND_HOST}:5000/trait_codings`;
+    fetch(url)
       .then((r) => r.json())
       .then((j) => this.setState({ traitCodings: j }));
     this.addToCart = this.addToCart.bind(this);

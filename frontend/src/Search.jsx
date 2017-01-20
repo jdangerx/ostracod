@@ -35,7 +35,8 @@ class Search extends Component {
     const queryString = this.formatParams(
       [['name', this.state.query.name],
        ['traits', JSON.stringify(this.state.query.traits)]]);
-    const url = 'http://localhost:5000/filter' + queryString;
+    const url =
+      `http://${process.env.REACT_APP_BACKEND_HOST}:5000/filter${queryString}`;
     fetch(url).then(
       (r) => r.json()
     ).then(
