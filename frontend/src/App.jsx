@@ -9,10 +9,12 @@ import Cart from './Cart.jsx';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { traitCodings: {}, cart: [], cartData: '' };
+    this.state = { traitCodings: {}, cart: [] };
     fetch('http://localhost:5000/trait_codings')
       .then((r) => r.json())
       .then((j) => this.setState({ traitCodings: j }));
+    this.addToCart = this.addToCart.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   recordsToCsv(records) {
@@ -26,16 +28,23 @@ class App extends Component {
     const headerLine = [headers.map((h) => `"${h}"`).join(',')];
     const dataLines = dataRows.map((row) =>
       row.map((cell) => `"${cell}"`).join(','));
-    return headerLine.concat(dataLines).join('\n') + '\n';
+    return `${headerLine.concat(dataLines).join('\n')}\n`;
   }
 
   addToCart(species) {
     const cart = this.state.cart;
     if (cart.find((inCart) => inCart.name === species.name) === undefined) {
-      const newCart = cart.concat([species]);
-      const cartData =
-        `data:text/csv;charset=utf-8,${encodeURIComponent(this.recordsToCsv(newCart))}`;
-      this.setState({ cart: newCart, cartData });
+      const newCart = cart.slice().concat([species]);
+      this.setState({ cart: newCart });
+    }
+  }
+
+  removeFromCart(name) {
+    const indexOfSpecies = this.state.cart.findIndex((species) => species.name === name);
+    if (indexOfSpecies !== -1) {
+      const newCart = this.state.cart.slice();
+      newCart.splice(indexOfSpecies, 1);
+      this.setState({ cart: newCart });
     }
   }
 
@@ -56,7 +65,7 @@ class App extends Component {
           {/* Search */}
           <Search
             traitCodings={this.state.traitCodings}
-            addToCart={this.addToCart.bind(this)}
+            addToCart={this.addToCart}
           />
         </TabPanel>
         <TabPanel>
@@ -69,7 +78,11 @@ class App extends Component {
         </TabPanel>
         <TabPanel>
           {/* Cart */}
-          <Cart species={this.state.cart} cartData={this.state.cartData} />
+          <Cart
+            species={this.state.cart}
+            cartData={this.state.cartData}
+            removeFromCart={this.removeFromCart}
+          />
         </TabPanel>
       </Tabs>
     );

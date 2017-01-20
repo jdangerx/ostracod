@@ -1,0 +1,11 @@
+.Cart {
+  padding-left: 1.5em;
+  padding-top: 1em;
+}
+
+.Cart a {
+}
+
+.Cart a:hover {
+  background-color: #CCFFCC;
+}
