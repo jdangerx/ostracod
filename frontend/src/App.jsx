@@ -6,6 +6,7 @@ import Home from './Home.jsx';
 import Search from './Search.jsx';
 import Cart from './Cart.jsx';
 import SpeciesUpload from './SpeciesUpload.jsx';
+import TraitInfo from './TraitInfo.jsx';
 
 
 class App extends Component {
@@ -74,7 +75,7 @@ class App extends Component {
         </TabPanel>
         <TabPanel>
           {/* Trait Info */}
-          Trait Info - we ain't got no datas
+          <TraitInfo traitCodings={this.state.traitCodings} />
         </TabPanel>
         <TabPanel>
           {/* Species Upload Info */}

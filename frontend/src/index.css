@@ -12,14 +12,12 @@ body {
   width: 80%;
 }
 
-.LeftColumn {
-  display: inline-block;
-  width: 40%;
+.Home, .TraitInfo, .Search {
+  display: flex;
 }
 
-.RightColumn {
-  display: inline-block;
-  width: 60%;
+.column {
+  padding: 0.5em;
 }
 
 .selected,.expanded {
@@ -32,4 +30,8 @@ body {
 
 .collapsed:hover {
     background-color: #CCFFCC;
+}
+
+.Image img {
+  width: 20em;
 }

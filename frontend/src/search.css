@@ -9,14 +9,6 @@
   background-color: #CCFFCC;
 }
 
-.Search {
-  display: flex;
-}
-
-.Search .column {
-  padding: 0.5em;
-}
-
 .TraitList {
   margin-left: 1.5em;
 }

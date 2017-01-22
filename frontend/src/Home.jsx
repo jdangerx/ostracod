@@ -11,10 +11,10 @@ function Home(_props) {
                 'evolutionary biology, paleontology, and more!';
   return (
     <div className="Home">
-      <div className="LeftColumn">
+      <div className="column">
         <Image src={placeholder} alt="A placeholder image." />
       </div>
-      <div className="RightColumn">
+      <div className="column">
         <TextBox header="OstracodDB" body={blurb} />
       </div>
     </div>
