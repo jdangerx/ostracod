@@ -40,7 +40,7 @@ class SearchResult extends Component {
       <div className="SearchResult">
         <div className={className} onClick={this.toggle}>
           {titleCase(this.props.name)}
-          <button onClick={this.addToCart}>Add to Cart!</button>
+          <button onClick={this.addToCart}>Add to Cart</button>
         </div>
         {maybeTraitList}
       </div>
