@@ -1,6 +1,22 @@
-.SearchForm {
-  padding-left: 0.5em;
+.Search {
+  overflow-wrap: true;
 }
+
+.SearchForm input {
+  margin-bottom: 1em;
+}
+
+.Search .column:first-child {
+  width: 30%;
+}
+
+.Search .column {
+  width: 70%;
+}
+.SearchResults .SearchResult {
+  width: 100%;
+}
+
 .TraitCheckbox {
   padding: 0.2em 0.5em 0.2em 1.5em;
 }

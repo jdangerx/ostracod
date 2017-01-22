@@ -55,41 +55,46 @@ class App extends Component {
 
   render() {
     return (
-      <Tabs>
-        <TabList>
-          <Tab>Home</Tab>
-          <Tab>Search</Tab>
-          <Tab>Trait Info</Tab>
-          <Tab>Species Upload</Tab>
-          <Tab>Cart</Tab>
-        </TabList>
-        <TabPanel>
-          <Home />
-        </TabPanel>
-        <TabPanel>
-          {/* Search */}
-          <Search
-            traitCodings={this.state.traitCodings}
-            addToCart={this.addToCart}
-          />
-        </TabPanel>
-        <TabPanel>
-          {/* Trait Info */}
-          <TraitInfo traitCodings={this.state.traitCodings} />
-        </TabPanel>
-        <TabPanel>
-          {/* Species Upload Info */}
-          <SpeciesUpload />
-        </TabPanel>
-        <TabPanel>
-          {/* Cart */}
-          <Cart
-            species={this.state.cart}
-            cartData={this.state.cartData}
-            removeFromCart={this.removeFromCart}
-          />
-        </TabPanel>
-      </Tabs>
+      <div className="App">
+        <div className="Header">
+          <h1>OstracodDB</h1>
+        </div>
+        <Tabs>
+          <TabList>
+            <Tab>Home</Tab>
+            <Tab>Search</Tab>
+            <Tab>Trait Info</Tab>
+            <Tab>Species Upload</Tab>
+            <Tab>Cart</Tab>
+          </TabList>
+          <TabPanel>
+            <Home />
+          </TabPanel>
+          <TabPanel>
+            {/* Search */}
+            <Search
+              traitCodings={this.state.traitCodings}
+              addToCart={this.addToCart}
+            />
+          </TabPanel>
+          <TabPanel>
+            {/* Trait Info */}
+            <TraitInfo traitCodings={this.state.traitCodings} />
+          </TabPanel>
+          <TabPanel>
+            {/* Species Upload Info */}
+            <SpeciesUpload />
+          </TabPanel>
+          <TabPanel>
+            {/* Cart */}
+            <Cart
+              species={this.state.cart}
+              cartData={this.state.cartData}
+              removeFromCart={this.removeFromCart}
+            />
+          </TabPanel>
+        </Tabs>
+      </div>
     );
   }
 }

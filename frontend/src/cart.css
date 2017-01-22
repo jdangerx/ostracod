@@ -3,9 +3,20 @@
   padding-top: 1em;
 }
 
-.Cart a {
+.Cart .DownloadButton {
+  padding-left: 0.25em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
-.Cart a:hover {
+.CartItem .name {
+  padding: 0.5em 0.25em 0.5em 0.25em;
+}
+
+.CartItem button {
+  float: right;
+}
+
+.CartItem .name:hover {
   background-color: #CCFFCC;
 }

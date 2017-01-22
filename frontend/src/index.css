@@ -10,6 +10,7 @@ body {
 
 .App {
   width: 80%;
+  margin: auto;
 }
 
 .Home, .TraitInfo, .Search {
@@ -32,6 +33,10 @@ body {
     background-color: #CCFFCC;
 }
 
+.Home .column:first-child, .TraitInfo .column:first-child {
+  width: 40%;
+}
+
 .Image img {
-  width: 20em;
+  width: 100%;
 }
