@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import titleCase from './utils.js';
 
 class TraitCheckbox extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class TraitCheckbox extends Component {
           "TraitCheckbox";
     return (
       <div className={className} onClick={this.handleChange}>
-        {this.props.trait.info[this.props.code]}
+        {titleCase(this.props.trait.info[this.props.code])}
       </div>);
   }
 }
@@ -43,7 +44,7 @@ class TraitOption extends Component {
 
     return (
       <div key={this.props.trait.name} className="TraitOption">
-        {this.props.trait.info['long name']}: {checkboxes}
+        {titleCase(this.props.trait.info['long name'])}: {checkboxes}
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TraitList from './TraitList.jsx';
+import titleCase from './utils.js';
 
 class SearchResult extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class SearchResult extends Component {
     return (
       <div className="SearchResult">
         <div className={className} onClick={this.toggle}>
-          {this.props.name}
+          {titleCase(this.props.name)}
           <button onClick={this.addToCart}>Add to Cart!</button>
         </div>
         {maybeTraitList}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import titleCase from './utils.js';
 
 class TraitList extends Component {
   render() {
@@ -6,8 +7,8 @@ class TraitList extends Component {
       (trait) =>
         (
           <tr key={trait.name}>
-            <td>{trait.name}</td>
-            <td>{trait.info.value}</td>
+            <td>{titleCase(trait.name)}</td>
+            <td>{titleCase(trait.info.value)}</td>
           </tr>
         )
     );

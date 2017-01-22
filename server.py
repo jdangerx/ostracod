@@ -1,10 +1,10 @@
 import json
 import os
 
-from flask import Flask, render_template, request
+from flask import Flask, request
 from flask_cors import CORS
 from database import from_gsheet
-from utils import title_case_species, human_readable_traits
+from utils import human_readable_traits
 
 app = Flask(__name__)
 CORS(app)
@@ -45,8 +45,7 @@ def filter():
                                      selected_values)
     longform_traits = {species: human_readable_traits(traits, trait_codings)
                        for species, traits in matches.items()}
-    title_cased = title_case_species(longform_traits)
-    sorted_matches = sorted(list(title_cased.items()))
+    sorted_matches = sorted(list(longform_traits.items()))
     records = [
         {"name": name,
          "traits": sorted(traits, key=lambda x: x["name"])}
@@ -54,8 +53,9 @@ def filter():
     ]
     return json.dumps(records)
 
+
 @app.route("/trait_codings")
 def get_trait_codings():
     records = [{"name": name, "info": info}
                for name, info in trait_codings.items()]
-    return json.dumps(sorted(records, key=lambda x: x["name"]))
+    return json.dumps(sorted(records, key=lambda x: x["info"]["long name"]))

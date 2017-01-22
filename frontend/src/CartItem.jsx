@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TraitList from './TraitList.jsx';
+import titleCase from './utils.js';
 
 class CartItem extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class CartItem extends Component {
     return (
       <div className="CartItem">
         <div className={className} onClick={this.toggle}>
-          {this.props.species.name}
+          {titleCase(this.props.species.name)}
           <button onClick={this.removeFromCart}>Remove from Cart</button>
         </div>
         {maybeTraitList}
