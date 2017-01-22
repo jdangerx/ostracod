@@ -1,3 +1,5 @@
 Flask==0.11.1
-openpyxl==2.3.5
 Flask-CORS==3.0.2
+gspread==0.6.2
+openpyxl==2.3.5
+oauth2client==4.0.0
