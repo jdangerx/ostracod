@@ -1,14 +1,17 @@
+import json
+import os
+
 from flask import Flask, render_template, request
 from flask_cors import CORS
-from database import from_xlsx
+from database import from_gsheet
 from utils import title_case_species, human_readable_traits
-import json
 
 app = Flask(__name__)
 CORS(app)
 
 
-db, trait_codings = from_xlsx("Trait Matrix.xlsx")
+db, trait_codings = from_gsheet(os.getenv("OSTRACOD_VIEWER_JSON"),
+                                "Ostracod Trait Matrix")
 
 
 def substr_search(items, substr=""):
@@ -19,7 +22,7 @@ def substr_search(items, substr=""):
 
 
 def trait_value_search(items, trait_name, selected_values):
-    selected_values = [int(v) for v in selected_values]
+    selected_values = [v for v in selected_values]
     if selected_values:
         matches = {species: traits
                    for species, traits in items

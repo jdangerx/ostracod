@@ -37,6 +37,7 @@ def munge_species(traits, comments):
                for s in traits}
     return species
 
+
 def from_xlsx(filepath):
     wb = openpyxl.load_workbook(filepath)
 
