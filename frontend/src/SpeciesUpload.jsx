@@ -7,7 +7,7 @@ function SpeciesUpload() {
     <div classname="SpeciesUpload">
       <iframe
         src="https://docs.google.com/forms/d/e/1FAIpQLSd90cmV-jS10DtmWP-pKnGdOvykbacXV8AEuHH9VATZRSypAw/viewform?embedded=true"
-        frameborder="0"
+        frameBorder="0"
         marginheight="0"
         marginwidth="0"
       >

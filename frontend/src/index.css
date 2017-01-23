@@ -2,6 +2,14 @@
   box-sizing: border-box;
 }
 
+.ReactTabs__TabPanel {
+  margin-top: -10px;
+  border-bottom: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  min-height: 75vh;
+}
+
 body {
   margin: 0;
   padding: 0;
