@@ -54,6 +54,7 @@ class App extends Component {
   }
 
   render() {
+    const cartSize = this.state.cart.length;
     return (
       <div className="App">
         <div className="Header">
@@ -65,7 +66,7 @@ class App extends Component {
             <Tab>Search</Tab>
             <Tab>Trait Info</Tab>
             <Tab>Species Upload</Tab>
-            <Tab>Cart</Tab>
+            <Tab>Cart{cartSize === 0 ? '' : ` (${cartSize})`}</Tab>
           </TabList>
           <TabPanel>
             <Home />

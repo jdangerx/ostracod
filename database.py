@@ -21,7 +21,10 @@ class Database:
 
     def run(self):
         while True:
-            self.update_from_google()
+            try:
+                self.update_from_google()
+            except Exception as e:
+                print("Update from Google Sheet failed: {}".format(e.msg))
             time.sleep(self.interval)
 
 
