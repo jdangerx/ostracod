@@ -1,9 +1,28 @@
 # coding: utf-8
 from functools import reduce
+import time
 
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-import openpyxl
+
+
+class Database:
+    def __init__(self, keyfile_path, sheet_name, interval):
+        self.keyfile_path = keyfile_path
+        self.sheet_name = sheet_name
+        self.interval = interval
+        self.update_from_google()
+
+    def update_from_google(self):
+        species, trait_codings = from_gsheet(self.keyfile_path,
+                                             self.sheet_name)
+        self.species = species
+        self.trait_codings = trait_codings
+
+    def run(self):
+        while True:
+            self.update_from_google()
+            time.sleep(self.interval)
 
 
 def clean(string):
@@ -36,29 +55,6 @@ def munge_species(traits, comments):
                                "comments": comments[s]})
                for s in traits}
     return species
-
-
-def from_xlsx(filepath):
-    wb = openpyxl.load_workbook(filepath)
-
-    traits_sheet = wb.get_sheet_by_name("Traits")
-    comments_sheet = wb.get_sheet_by_name("Comments")
-    codings_sheet = wb.get_sheet_by_name("Trait codings")
-
-    trait_names, *species_info = [[c.value for c in r]
-                                  for r in traits_sheet["A3":"U{:d}".format(traits_sheet.max_row)]]
-    comment_trait_names, *species_comments = [[c.value for c in r]
-                                              for r in comments_sheet["A3":"U{:d}".format(comments_sheet.max_row)]]
-    traits = make_dicts_from_rows(trait_names, species_info)
-    comments = make_dicts_from_rows(comment_trait_names, species_comments)
-
-    species = {s: merge_dicts({"value": traits[s], "comments": comments[s]}) for s in traits}
-
-    coding_names, *coding_info = [[c.value for c in r]
-                                  for r in codings_sheet["A1":"E{:d}".format(codings_sheet.max_row)]]
-    codings = make_dicts_from_rows(coding_names, coding_info)
-    return species, codings
-
 
 def from_gsheet(keyfile_path, sheet_name):
     scope = ['https://spreadsheets.google.com/feeds']
