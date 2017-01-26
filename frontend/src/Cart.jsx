@@ -3,13 +3,13 @@ import CartItem from './CartItem.jsx';
 import './cart.css';
 
 class Cart extends Component {
-  recordsToCsv(records) {
+  recordsToCsv(records, key) {
     if (records.length === 0) {
       return '';
     }
     const headers = Object.keys(records[0]);
-    const dataRows = records.map((record) =>
-      headers.map((header) => record[header] || '')
+    const dataRows = records.map((record) => {
+      return headers.map((header) => record[header][key] || '');}
     );
     const headerLine = [headers.map((h) => `"${h}"`).join(',')];
     const dataLines = dataRows.map((row) =>
@@ -28,23 +28,51 @@ class Cart extends Component {
         />)
     );
 
-    const csv = this.recordsToCsv(this.props.species);
-    const cartData =
-      csv ?
-      `data:text/csv;charset=utf-8,${encodeURIComponent(csv)}` :
+    const cartRecords = this.props.species.map(
+      ({ name, traits }) => {
+        const record = {};
+        record.name = name;
+        traits.forEach(({ name: traitName, info }) => { record[traitName] = info; });
+        return record;
+        }
+    );
+    const traitsCsv = this.recordsToCsv(cartRecords, 'value');
+    const commentsCsv = this.recordsToCsv(cartRecords, 'comments');
+    const traitsData =
+      traitsCsv ?
+      `data:text/csv;charset=utf-8,${encodeURIComponent(traitsCsv)}` :
       '';
 
-    const downloadButton = (
+    const commentsData =
+      commentsCsv ?
+      `data:text/csv;charset=utf-8,${encodeURIComponent(commentsCsv)}` :
+      '';
+
+    const downloadTraitsButton = (
       <div className="DownloadButton">
-        <a href={cartData} download="cart_OstracodDB.csv" >
-          Download a CSV of these species!
+        <a href={traitsData} download="cart_OstracodDB_traits.csv" >
+          Download a CSV of these species' trait values
         </a>
+      </div>
+    );
+    const downloadCommentsButton = (
+      <div className="DownloadButton">
+        <a href={commentsData} download="cart_OstracodDB_comments.csv" >
+          Download a CSV of these species' trait comments
+        </a>
+      </div>
+    );
+
+    const downloadButtons = (
+      <div className="DownloadButtonContainer">
+        {downloadTraitsButton}
+        {downloadCommentsButton}
       </div>
     );
 
     return (
       <div className="Cart">
-        { list.length === 0 ? 'Your cart is empty!' : downloadButton }
+        { list.length === 0 ? 'Your cart is empty!' : downloadButtons }
         <div className="CartItems">
           { list }
         </div>
