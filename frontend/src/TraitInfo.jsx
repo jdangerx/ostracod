@@ -2,7 +2,7 @@ import React from 'react';
 
 import Image from './Image.jsx';
 import placeholder from './esem_placeholder.png';
-import titleCase from './utils.js';
+import { titleCase } from './utils.js';
 
 import './traitinfo.css';
 

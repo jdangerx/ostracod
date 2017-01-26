@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import titleCase from './utils.js';
+import { titleCase } from './utils.js';
 
 class TraitCheckbox extends Component {
   constructor(props) {

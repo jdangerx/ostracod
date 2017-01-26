@@ -1,4 +1,6 @@
-function titleCase(s) {
+/* jshint esversion: 6 */
+
+export function titleCase(s) {
   const stopWords = ['of', 'or', 'and'];
   if (s) {
     return s.split(' ')
@@ -11,4 +13,6 @@ function titleCase(s) {
   return s;
 }
 
-export default titleCase;
+export function speciesCase(s) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}

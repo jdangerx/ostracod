@@ -11,6 +11,7 @@
 
 .CartItem .name {
   padding: 0.5em 0.25em 0.5em 0.25em;
+  font-style: italic;
 }
 
 .CartItem button {
