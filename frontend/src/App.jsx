@@ -39,7 +39,12 @@ class App extends Component {
   addToCart(species) {
     const cart = this.state.cart;
     if (cart.find((inCart) => inCart.name === species.name) === undefined) {
-      const newCart = cart.slice().concat([species]);
+      const newCart =
+        cart
+          .slice()
+          .concat([species])
+          .sort(
+            (a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1));
       this.setState({ cart: newCart });
     }
   }

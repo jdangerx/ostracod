@@ -36,7 +36,7 @@ class Cart extends Component {
 
     const downloadButton = (
       <div className="DownloadButton">
-        <a href={cartData} download="cart.csv" >
+        <a href={cartData} download="cart_OstracodDB.csv" >
           Download a CSV of these species!
         </a>
       </div>

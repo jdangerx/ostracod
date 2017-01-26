@@ -24,7 +24,7 @@ class Database:
             try:
                 self.update_from_google()
             except Exception as e:
-                print("Update from Google Sheet failed: {}".format(e.msg))
+                print("Update from Google Sheet failed: {}".format(e))
             time.sleep(self.interval)
 
 
