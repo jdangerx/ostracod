@@ -35,6 +35,11 @@
 .TraitList tr td:first-child {
   font-weight: normal;
 }
+.TraitList tr td:last-child {
+  font-weight: normal;
+  font-style: italic;
+  color: #AAA;
+}
 
 .SearchResult .name {
   padding: 0.5em 0.25em 0.5em 0.25em;

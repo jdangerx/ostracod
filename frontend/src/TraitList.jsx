@@ -8,7 +8,12 @@ class TraitList extends Component {
         (
           <tr key={trait.name}>
             <td>{titleCase(trait.name)}</td>
-            <td>{titleCase(trait.info.value)}</td>
+            <td>{
+              trait.info.value ?
+                 titleCase(trait.info.value) :
+                 'N/A'
+                }</td>
+            <td>{trait.info.comments}</td>
           </tr>
         )
     );

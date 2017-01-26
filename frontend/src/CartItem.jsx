@@ -21,17 +21,8 @@ class CartItem extends Component {
 
   render() {
     let maybeTraitList = null;
-    const traits =
-      Object.keys(this.props.species)
-            .filter((key) => key !== 'name')
-            .map((key) => ({ name: key,
-                             info: {
-                               value: this.props.species[key],
-                             },
-                          })
-                         );
     if (this.state.expanded) {
-      maybeTraitList = <TraitList traits={traits} />;
+      maybeTraitList = <TraitList traits={this.props.species.traits} />;
     }
     const className =
           this.state.expanded ?

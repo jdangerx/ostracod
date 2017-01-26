@@ -15,16 +15,8 @@ class SearchResult extends Component {
   }
 
   addToCart(e) {
-    const nameField = { name: this.props.name };
-    const traitFields = this.props.traits.reduce(
-      (fields, trait) => {
-        const field = {};
-        field[trait.name] = trait.info.value;
-        return Object.assign(fields, field);
-      }, {}
-    );
     e.stopPropagation();
-    this.props.addToCart(Object.assign(nameField, traitFields));
+    this.props.addToCart({ name: this.props.name, traits: this.props.traits });
   }
 
   render() {
