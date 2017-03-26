@@ -8,14 +8,22 @@ class Cart extends Component {
       return '';
     }
     const headers = Object.keys(records[0]);
-    const dataRows = records.map((record) => {
-      return headers.map((header) => record[header][key] || '');}
+    const dataRows = records.map((record) =>
+      headers.map((header) => {
+        if (header === "name") {
+          return record[header];
+        }
+        return record[header][key] || '';
+      })
     );
     const headerLine = [headers.map((h) => `"${h}"`).join(',')];
     const dataLines = dataRows.map((row) =>
       row.map((cell) => `"${cell}"`).join(','));
     return `${headerLine.concat(dataLines).join('\n')}\n`;
   }
+
+  recordToDataRow(header) {
+    }
 
 
   render() {
