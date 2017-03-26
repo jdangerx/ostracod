@@ -41,9 +41,8 @@ def make_dict_from_cells(cells):
 
 def make_dicts_from_rows(headers, rows):
     headers_clean = [clean(h) for h in headers]
-    rows_clean = [[clean(c) for c in r] for r in rows]
     return {clean(row[0]): dict(zip(headers_clean[1:], row[1:]))
-            for row in rows_clean}
+            for row in rows}
 
 
 def merge_dicts(dict_of_dicts):
