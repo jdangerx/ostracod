@@ -39,7 +39,9 @@ def trait_value_search(items, trait_name, selected_values):
 def filter():
     name = request.args.get("name", "")
     try:
-        traits = [(t, v) for t, v in json.loads(request.args.get("traits")).items() if v is not None]
+        traits = [(t, v)
+                  for t, v in json.loads(request.args.get("traits")).items()
+                  if v is not None]
     except TypeError:
         traits = []
     matches = substr_search(db.species.items(), name)

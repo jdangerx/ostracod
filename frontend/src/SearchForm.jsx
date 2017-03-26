@@ -1,44 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import TraitOption from './TraitOption.jsx';
+import Expandable from './Expandable.jsx';
 
-class SearchForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { expanded: false };
-    this.toggle = this.toggle.bind(this);
-  }
-
-  toggle() {
-    this.setState({ expanded: !this.state.expanded });
-  }
-
-  render() {
-    const className =
-          this.state.expanded ?
-          "TraitOptionsToggle expanded" :
-          "TraitOptionsToggle collapsed";
-    const traitOptionsToggle = <div className={className} onClick={this.toggle}>Filter by Traits</div>;
-    let traitOptions = null;
-    if (this.state.expanded) {
-      traitOptions = this.props.traitCodings.map((trait) =>
-        <TraitOption
-          key={trait.name}
-          trait={trait}
-          toggleTraitFilter={this.props.toggleTraitFilter}
-          selected={this.props.selectedTraits[trait.name]}
-        />);
-    }
+function SearchForm (props) {
+    const traitOptions = props.traitCodings.map((trait) => {
+      const traitOption = <TraitOption
+        key={trait.name}
+        trait={trait}
+        toggleTraitFilter={props.toggleTraitFilter}
+        selected={props.selectedTraits[trait.name]}
+      />;
+      return <Expandable header={trait.info['long name']} contents={traitOption} />;
+    });
     return (
       <div className="SearchForm">
-        <input type="text" placeholder="Species Name" onChange={this.props.handleNameChange}/>
-        {traitOptionsToggle}
+        <h4>Search by Name</h4>
+        <input type="text" placeholder="Species Name" onChange={props.handleNameChange}/>
+        <h4>Filter by Trait Values</h4>
         <div className="TraitOptions">
           {traitOptions}
         </div>
       </div>
     );
-  }
 }
 
 export default SearchForm;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component }  from 'react';
 import { titleCase } from './utils.js';
 
 class TraitCheckbox extends Component {
@@ -44,7 +44,7 @@ class TraitOption extends Component {
 
     return (
       <div key={this.props.trait.name} className="TraitOption">
-        {titleCase(this.props.trait.info['long name'])}: {checkboxes}
+        {checkboxes}
       </div>
     );
   }
